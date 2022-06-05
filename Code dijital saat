@@ -1,0 +1,36 @@
+#include <LiquidCrystal.h>
+
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+int saat;
+int dk;
+int sn;
+
+void setup() {
+lcd.begin(16,2);
+sn =0;
+dk =0;
+saat =0;
+}
+
+void loop() {
+sn++; delay(950);
+
+
+if(sn>=60){
+dk++;
+sn=0;
+}
+
+if(dk>=60){
+saat++;
+}
+
+//lcd 
+  lcd.clear();
+  lcd.setCursor(0,1);
+  lcd.print("saat: "); lcd.print(saat);
+  lcd.print(":"); lcd.print(dk);
+  lcd.print(":"); lcd.print(sn);
+}
